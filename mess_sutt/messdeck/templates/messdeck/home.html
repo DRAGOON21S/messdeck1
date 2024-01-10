@@ -1,0 +1,33 @@
+{% extends "messdeck/base.html" %}
+{% block title %} Home Page {% endblock title%}
+
+{% block content %}
+{%if user.is_authenticated%}
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome</h1>
+        <p class="lead">
+            You  are logged in as {%if user.email%}{{user.email}}{%else%}{{user.username}}{%endif%}        </p>
+                {%if user.email%}
+                 welcome please complete profile
+                {%else%}
+                    {%if user.is_staff%}
+                    <h5>congrats you are authorized</h5>
+                    {%else%}   
+                    <h5>you are not authorized, contact admin</h5>
+                    {%endif%}
+                
+                {%endif%}
+            
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="logout" role="button">Logout</a>
+            
+        </p>
+    </div>
+
+{%else%}
+you are not logged in
+<a class="btn btn-primary btn-lg" href="logout" role="button">Login</a>
+{%endif%}
+
+{% endblock content %}

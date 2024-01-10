@@ -1,0 +1,28 @@
+*{
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.madeby{
+    width: 100%;
+    
+    padding: 64px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.text{
+    width: 720px;
+    height: 100px;
+    padding: 35px 12px 0px;
+    border-top: solid #fff 1px;
+}
+.copyright{
+    padding: 35px 12px 0px;
+    border-top: solid #fff 1px;
+    width: 720px;
+
+}

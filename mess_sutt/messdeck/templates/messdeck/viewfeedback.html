@@ -1,0 +1,14 @@
+{% extends "messdeck/base.html" %}
+{% block title %}Feedback and Complaint{% endblock title%}
+
+{% block content %}
+
+{% for feedback in feedbacks %}
+<div class="feedback-item">
+    <h2>{{ feedback.title }}</h2>
+    <p>{{ feedback.description }}</p>
+    <img src="{{ feedback.feedback_complaints.url }}" alt="{{ feedback.title }}">
+</div>
+{% endfor %}
+
+{% endblock content %}

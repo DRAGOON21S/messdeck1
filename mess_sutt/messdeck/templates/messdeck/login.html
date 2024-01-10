@@ -1,0 +1,104 @@
+
+{% extends "messdeck/base.html" %}
+{% block title %} Login Page {% endblock title%}
+{% block content %}
+    <div class="form-content my-3 p-3">
+        <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                        <div class="card-header justify-content-center">
+                          <h3 class="font-weight-light my-1 text-center">Sign In</h3>
+                        </div>
+                        {% if form.errors %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <div id="form_errors">
+                                    {% for key, value in form.errors.items %}
+                                        <strong>{{ value }}</strong>
+                                    {% endfor %}
+                                </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {%load socialaccount %}
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                            <a href='{% url 'social:begin' 'google-oauth2' %}?next=/home'
+                                                   class="btn btn-link btn-lg active btn-block">Sign in with Google</a>
+                                            {% comment %} <a href="#"
+                                                   class="btn btn-link btn-lg active btn-block">Sign in with Google</a> {% endcomment %}
+                                            <hr>
+                                            <p class="text-center"><strong>OR</strong></p>
+                                            <hr>
+                                            <label class="small mb-1">Username</label>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                          <label class="small mb-1">Password</label>
+                                          {{ form.password }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                            <!-- Add a Remember me functionality -->
+                                            {{ form.remember_me }}
+                                            <label> Remember me</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group mt-0 mb-1">
+                                          <button name="login" class="col-md-12 btn btn-dark" id="login">Sign in</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="small">
+                                <a href="{% url 'messdeck-register' %}">Don't have an account yet? Go to signup</a><br>
+                                <a href="#"><i>Forgot Password?</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+{% endblock content %}
+
+
+{% comment %} <html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+{%load socialaccount %}
+<h1>Login</h1>
+<a href="http://127.0.0.1:8000/register/">register</a>
+<h2>Google Login</h2>
+<a href='{% provider_login_url "google" %}?next=/home'>
+    Login with Google</a>
+
+{%if user.is_authenticated%}
+<p> You  are logged in as {{user.email}}</p>
+<a href="logout">Logout</a>
+{%endif%}
+</body>
+</html> {% endcomment %}

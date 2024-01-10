@@ -1,0 +1,12 @@
+{% extends "messdeck/base.html" %}
+{% block title %}Feedback and Complaint{% endblock title%}
+
+{% block content %}
+<br><br>
+<h1>Feedback and Complaint</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ BKattend.BKattend }}
+        <button type="submit">Submit</button>
+
+{% endblock content %}

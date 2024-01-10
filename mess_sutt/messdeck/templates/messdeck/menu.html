@@ -1,0 +1,46 @@
+{% extends "messdeck/base.html" %}
+{% block title %} view menu {% endblock title%}
+
+{% block content %}
+<br><br>
+
+        {% for date in dates %}
+            
+                <fieldset>
+                    
+                    <legend><H2>{{ date.date }}</H2></legend>
+                    <HR COLOR="#FF0000">
+                    <h4>BREAKFAST</h4>
+                    {% for breakfast in date.breakfast_set.all %}
+                    {{ breakfast.name }}<br>
+                    <!-- <form method="post">
+                        {% csrf_token %}
+                        {{ form.stars }}
+                        <button type="submit">Submit</button>
+                    </form> -->
+                    {% endfor %}
+                    <br>
+                    <h4>LUNCH</h4>
+                    {% for lunch in date.lunch_set.all %}
+                    {{ lunch.name }}<br>
+                    {% endfor %}
+                    <br>
+                    <h4>DINNER</h4>
+                    {% for dinner in date.dinner_set.all %}
+                    {{ dinner.name }}<br>
+                    
+                
+            {% endfor %}
+        </fieldset>
+        <HR COLOR="#FF0000">
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+{% endblock content %}

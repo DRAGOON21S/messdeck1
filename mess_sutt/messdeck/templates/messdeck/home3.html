@@ -1,0 +1,19 @@
+{%if user.is_authenticated%}
+hi
+<p> You  are logged in as {{user.email}}</p>
+<a href="logout">Logout</a>
+<br><br>
+<p>We're here to help.</p>
+
+<form action="" method="post" novalidate>
+{% csrf_token %}
+{{ form }}
+<input type="submit" value="Submit">
+</form>
+
+
+
+{%else%}
+you are not logged in
+<a href="logout">Login</a>
+{%endif%}
